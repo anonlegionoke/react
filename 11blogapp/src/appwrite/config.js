@@ -13,7 +13,6 @@ export class Service{
         this.databases = new Databases(this.client)
         this.bucket = new Storage(this.client)
     }
-
     async getPost(slug) {
         try {
            return await this.databases.getDocument(conf.appwriteDatabaseId, conf.appwriteCollectionId, slug)
@@ -47,7 +46,7 @@ export class Service{
 
     }
 
-    async updatePost(slug, {title, slug, content, featuredImage, status}) {
+    async updatePost(slug, {title, content, featuredImage, status}) {
         try {
             return await this.databases.updateDocument(conf.appwriteDatabaseId, conf.appwriteCollectionId, slug, {
                 title, content, featuredImage, status

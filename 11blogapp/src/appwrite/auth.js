@@ -44,11 +44,11 @@ Signup, Log out, session manage, etc.*/
             throw error
         }
      }
-    async getCurrentUser() { 
+     async getCurrentUser(){
         try {
             return await this.account.get()
         } catch (error) {
-            console.log("Appwrite service :: getCurrentUser() :: ", error)
+            console.log("Appwrite service :: getCurrentUser() ::", error);
         }
         return null
     }
@@ -56,7 +56,7 @@ Signup, Log out, session manage, etc.*/
         try {
             return await this.account.deleteSessions()
         } catch (error) {
-         console.log("Appwrite service :: logout() :: ", error) 
+         console.log("Appwrite service :: logout() ::", error) 
         }
     }
     
