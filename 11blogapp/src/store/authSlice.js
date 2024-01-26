@@ -1,9 +1,11 @@
 /* Reducers go in here.
 
-Reducers are nothing but the functions which used to update the state based on other actions
+Reducers are nothing but the functions which is used to update the state based on other actions
 
 We use createSlice from Redux toolkit to generate these functions(reducers) for a 
 given 'slice' of state.*/
+
+/* WHAT IS THE ACTUAL NEED OF REDUX IN REACT? */
 
 
 import { createSlice } from "@reduxjs/toolkit"
