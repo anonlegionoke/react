@@ -4,14 +4,17 @@ import { useNavigate } from 'react-router-dom'
 
 function Protected({ children, authentication = true }) {
   
-  const authStatus = useSelector((state) => { state.auth.status })
+  const authStatus = useSelector((state) => state.auth.status)
+
+  /* useSelector is used to extract data (status of the state, here its's authetication state)
+   from the redux store */
   
   const navigate = useNavigate()
 
   /* As you can see there are multiples queries going back and forth here
   like useSelector, useNavigate, authentication etc.
   
-  So we need a state management here (useState)
+  So we need a useState here to setup a 'loading'
   
   Follow along*/
 
@@ -20,13 +23,13 @@ function Protected({ children, authentication = true }) {
   useEffect(() => {
     /* if authentication required and the status is not authenticated, we need to return to login page */
    if (authentication && authStatus !== authentication) {
-    navigate('/') 
+    navigate('/login') 
    }
-   /* else if authentication is not required and the status is authenticated, then we should not be
+   /* else if authentication is not required and the status is also not authenticated, then we should not be
    on login/signup pages
    */
    else if (!authentication && authStatus !== authentication) {
-     navigate('/login')
+     navigate('/')
    }
     
     setLoader(false)

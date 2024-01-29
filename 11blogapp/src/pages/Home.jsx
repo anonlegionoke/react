@@ -1,5 +1,5 @@
 import React from 'react'
-import appwriteService from "../appwrite/config"
+import service from "../appwrite/config"
 import { useState } from 'react'
 import { useEffect } from 'react'
 import Container from '../components/container/Container'
@@ -10,7 +10,7 @@ function Home() {
   const [posts, setPosts] = useState([])
 
   useEffect(() => {
-    appwriteService.getPosts([]).then((posts) => {
+    service.getPosts([]).then((posts) => {
       if (posts) {
         setPosts(posts.documents)
       }

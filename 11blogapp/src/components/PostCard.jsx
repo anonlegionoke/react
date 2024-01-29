@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import appwriteService from '../appwrite/config.js'
+import service from '../appwrite/config.js'
 
 function PostCard({
     $id,
@@ -13,10 +13,11 @@ function PostCard({
               <div
                   className='w-full justify-center mb-4'
               >
-                  <img src={
-                      appwriteService.getFilePreview(featuredImage)}
+                  <img
+                      src={
+                      service.getFilePreview(featuredImage)}
                       alt={title}
-                      className='rounded-xl' />
+                      className='rounded-xl font-bold' />
               </div>
               <h2 className='text-xl font-bold'>{title}</h2>
           </div>

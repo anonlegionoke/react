@@ -3,13 +3,11 @@ import conf from "../conf/conf"
 
 export class Service{
     client = new Client()
-    account;
+    databases;
     bucket;
 
     constructor() {
-        this.client
-            .setEndpoint(conf.appwriteUrl)
-            .setProject(conf.appwriteProjectId)
+        this.client.setEndpoint(conf.appwriteUrl).setProject(conf.appwriteProjectId)
         this.databases = new Databases(this.client)
         this.bucket = new Storage(this.client)
     }
@@ -21,10 +19,12 @@ export class Service{
             return false
         }
     }
+    /* the following is not to get all posts, but to retrieve posts based on a query */
 
-    async getPosts(queries = [Query.equal("status", "active")]) {
+    async getPosts() {
         try {
-            return await this.databases.listDocuments(conf.appwriteDatabaseId, conf.appwriteCollectionId, queries)
+            return await this.databases.listDocuments(conf.appwriteDatabaseId, conf.appwriteCollectionId,
+            [Query.equal("status", ["active"])])
         } catch (error) {
             console.log( "Appwrite service :: getPosts() ::" ,error)
             return false
@@ -32,7 +32,7 @@ export class Service{
 
     }
 
-    /* we use slug for the ID.unique() */
+    /* we use ID.unique() for slug */
 
     async createPost({title, slug, content, featuredImage, status, userId}) {
         try {

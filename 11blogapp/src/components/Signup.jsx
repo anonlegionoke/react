@@ -29,7 +29,7 @@ useDispatch to dispatch, to register the user useForm() etc. */
             const userData = await authService.createAccount(data) /* creating account using entered data */
             if (userData) {
                 const userData = await authService.getCurrentUser()
-                if (userData) dispatch(login({userData})) /* using dispatch to store the user in redux */
+                if (userData) dispatch(login({userData})) /* if user exits dispatch login action */
                 navigate("/") /* send the user to home */
             }
         } catch (error) {
